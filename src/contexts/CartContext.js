@@ -64,7 +64,13 @@ const CartProvider = ({ children }) => {
       const newCart = [];
       for(let i = 0; i < cart.length; i++) {
           if(cart[i].id === id) {
-              newCart.push({...cart[i], amount: --cart[i].amount});
+              if(cart[i].amount - 1 > 0) {
+                  newCart.push({...cart[i], amount: --cart[i].amount});
+              }
+              else {
+                  removeFromCart(id);
+                  return;
+              }
           }
           else {
               newCart.push(cart[i]);
