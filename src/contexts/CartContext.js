@@ -23,18 +23,19 @@ const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (product, id) => {
-      let productAmount = 0;
       const newCart = [];
+      const newProduct = product;
+      newProduct.amount = 1;
       for(let i = 0; i < cart.length; i++) {
-          if(cart[i].product.id === id) {
-              productAmount = cart[i].amount;
+          if(cart[i].id === id) {
+              newProduct.amount = ++cart[i].amount;
           }
           else {
               newCart.push(cart[i]);
           }
-
       }
-      setCart([...newCart, {product: product, amount: ++productAmount}]);
+      newCart.push(newProduct);
+      setCart(newCart);
   };
 
   const removeFromCart = (id) => {
@@ -49,7 +50,7 @@ const CartProvider = ({ children }) => {
   const increaseAmount = (id) => {
       const newCart = [];
       for(let i = 0; i < cart.length; i++) {
-          if(cart[i].product.id === id) {
+          if(cart[i].id === id) {
               newCart.push({...cart[i], amount: ++cart[i].amount});
           }
           else {
@@ -62,7 +63,7 @@ const CartProvider = ({ children }) => {
   const decreaseAmount = (id) => {
       const newCart = [];
       for(let i = 0; i < cart.length; i++) {
-          if(cart[i].product.id === id) {
+          if(cart[i].id === id) {
               newCart.push({...cart[i], amount: --cart[i].amount});
           }
           else {
