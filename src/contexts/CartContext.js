@@ -3,14 +3,10 @@ import React, { createContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  // cart state
   const [cart, setCart] = useState([]);
-  // item amount state
   const [itemAmount, setItemAmount] = useState(0);
-  // total price state
   const [total, setTotal] = useState(0);
 
-  // update item amount
   useEffect(() => {
     if (cart) {
       const amount = cart.reduce((accumulator, currentItem) => {
@@ -27,23 +23,53 @@ const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (product, id) => {
-    // your code
+      let productAmount = 0;
+      const newCart = [];
+      for(let i = 0; i < cart.length; i++) {
+          if(cart[i].product.id === id) {
+              productAmount = cart[i].amount;
+          }
+          else {
+              newCart.push(cart[i]);
+          }
+
+      }
+      setCart([...newCart, {product: product, amount: ++productAmount}]);
   };
 
   const removeFromCart = (id) => {
-    // your code
+      const newCart = cart.filter((item) => item.id !== id);
+      setCart(newCart);
   };
 
   const clearCart = () => {
-    // your code
+      setCart([]);
   };
 
   const increaseAmount = (id) => {
-    // your code
+      const newCart = [];
+      for(let i = 0; i < cart.length; i++) {
+          if(cart[i].product.id === id) {
+              newCart.push({...cart[i], amount: ++cart[i].amount});
+          }
+          else {
+              newCart.push(cart[i]);
+          }
+      }
+      setCart(newCart);
   };
 
   const decreaseAmount = (id) => {
-    // your code
+      const newCart = [];
+      for(let i = 0; i < cart.length; i++) {
+          if(cart[i].product.id === id) {
+              newCart.push({...cart[i], amount: --cart[i].amount});
+          }
+          else {
+              newCart.push(cart[i]);
+          }
+      }
+      setCart(newCart);
   };
 
   return (
