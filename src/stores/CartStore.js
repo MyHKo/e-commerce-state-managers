@@ -33,7 +33,8 @@ const useCartStore = create((set, get) => {
             }
             newCart.push(newProduct);
             setItemAmount(newCart);
-            return set((state) => ({newCart, ...state}))
+            console.log(cart)
+            return set((state) => ({...state, cart: newCart}))
         },
         removeFromCart: (id) => {
             const newCart = get().cart.filter((item) => item.id !== id);
