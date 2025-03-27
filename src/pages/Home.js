@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../contexts/ProductContext";
+import React from "react";
+import { useProductStore } from "../stores/productStore";
 import Product from '../components/Product'
 import Hero from '../components/Hero'
 
 const Home = () => {
-  const { products } = useContext(ProductContext);
+  const { products } = useProductStore();
 
 
   const filteredProducts = products.filter((item) => {
