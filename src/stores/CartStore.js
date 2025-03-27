@@ -21,7 +21,7 @@ const useCartStore = create((set, get) => {
         addToCart: (product, id) => {
             const cart = get().cart;
             const newCart = [];
-            const newProduct = product;
+            const newProduct = {...product};
             newProduct.amount = 1;
             for(let i = 0; i < cart.length; i++) {
                 if(cart[i].id === id) {
@@ -33,7 +33,6 @@ const useCartStore = create((set, get) => {
             }
             newCart.push(newProduct);
             setItemAmount(newCart);
-            console.log(cart)
             set((state) => ({...state, cart: newCart}))
         },
         removeFromCart: (id) => {
