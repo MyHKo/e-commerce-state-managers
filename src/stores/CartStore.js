@@ -11,7 +11,7 @@ const useCartStore = create((set, get) => {
             return accumulator + currentItem.price * currentItem.amount;
         }, 0);
 
-        set((state) => ({itemAmount: amount, total: total,  ...state}))
+        set((state) => ({...state, itemAmount: amount, total: total}))
     }
 
     return {
@@ -39,7 +39,7 @@ const useCartStore = create((set, get) => {
         removeFromCart: (id) => {
             const newCart = get().cart.filter((item) => item.id !== id);
             setItemAmount(newCart)
-            set((state) => ({...state, newCart}))
+            set((state) => ({...state, cart: newCart}))
         },
         clearCart: () => {
             setItemAmount([])
