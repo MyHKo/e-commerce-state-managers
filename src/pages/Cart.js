@@ -16,7 +16,7 @@ const Cart = () => {
     if (isOpen) {
       close();
     }
-  }, [isOpen])
+  }, [isOpen, close])
 
   return (
     <section className="py-20 px-[50px] h-screen">
