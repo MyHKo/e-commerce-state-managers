@@ -1,6 +1,8 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-const useCartStore = create((set, get) => {
+const useCartStore = create(
+    persist((set, get) => {
 
     const setItemAmount = (cart) => {
         const amount = cart.reduce((accumulator, currentItem) => {
@@ -79,6 +81,10 @@ const useCartStore = create((set, get) => {
             set((state) => ({newCart, ...state}));
         }
     }
-})
+},
+        {
+            name: "CartStore",
+        })
+)
 
 export { useCartStore };
