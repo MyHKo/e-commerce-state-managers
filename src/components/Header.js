@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import { useSideBarStore } from "../stores/SidebarStore";
-import { CartContext } from "../contexts/CartContext";
+import { useCartStore } from "../stores/CartStore";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
@@ -8,7 +8,7 @@ import { BsBag } from "react-icons/bs";
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const { handleClose } = useSideBarStore();
-  const { itemAmount } = useContext(CartContext);
+  const { itemAmount } = useCartStore();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

@@ -6,11 +6,11 @@ import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
 import { useSideBarStore } from "../stores/SidebarStore";
-import { CartContext } from "../contexts/CartContext";
+import { useCartStore } from "../stores/CartStore";
 
 const Cart = () => {
   const { isOpen, close } = useSideBarStore();
-  const { cart, clearCart, itemAmount, total } = useContext(CartContext);
+  const { cart, clearCart, itemAmount, total } = useCartStore();
 
   useEffect(() => {
     if (isOpen) {
