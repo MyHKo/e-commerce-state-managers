@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSideBarStore } from "../stores/sidearStore";
+import { useSideBarStore } from "../stores/SidebarStore";
 import { CartContext } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";

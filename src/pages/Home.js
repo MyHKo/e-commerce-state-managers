@@ -1,5 +1,5 @@
 import React from "react";
-import { useProductStore } from "../stores/productStore";
+import { useProductStore } from "../stores/ProductStore";
 import Product from '../components/Product'
 import Hero from '../components/Hero'
 

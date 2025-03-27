@@ -6,7 +6,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
-import {useSideBarStore} from "../stores/sidearStore";
+import {useSideBarStore} from "../stores/SidebarStore";
 import { CartContext } from "../contexts/CartContext";
 
 const Sidebar = () => {
