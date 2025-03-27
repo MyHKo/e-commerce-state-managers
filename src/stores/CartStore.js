@@ -39,11 +39,11 @@ const useCartStore = create((set, get) => {
         removeFromCart: (id) => {
             const newCart = get().cart.filter((item) => item.id !== id);
             setItemAmount(newCart)
-            set((state) => ({newCart, ...state}))
+            set((state) => ({...state, newCart}))
         },
         clearCart: () => {
             setItemAmount([])
-            set((state) => ({cart: [], ...state}))
+            set((state) => ({...state, cart: []}))
         },
         increaseAmount: (id) => {
             const cart = get().cart
