@@ -1,17 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SidebarContext } from "../contexts/SidebarContext";
+import {useSideBarStore} from "../stores/sidearStore";
 import { CartContext } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
 
 const Header = () => {
-  // header state
   const [isActive, setIsActive] = useState(false);
-  const { isOpen, setIsOpen } = useContext(SidebarContext);
+  const { handleClose } = useSideBarStore();
   const { itemAmount } = useContext(CartContext);
 
-  // event listener
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
@@ -31,9 +29,8 @@ const Header = () => {
           </div>
         </Link>
 
-        {/* cart */}
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={handleClose}
           className="cursor-pointer flex relative"
         >
           <BsBag className="text-2xl" />
