@@ -34,16 +34,16 @@ const useCartStore = create((set, get) => {
             newCart.push(newProduct);
             setItemAmount(newCart);
             console.log(cart)
-            return set((state) => ({...state, cart: newCart}))
+            set((state) => ({...state, cart: newCart}))
         },
         removeFromCart: (id) => {
             const newCart = get().cart.filter((item) => item.id !== id);
             setItemAmount(newCart)
-            return set((state) => ({newCart, ...state}))
+            set((state) => ({newCart, ...state}))
         },
         clearCart: () => {
             setItemAmount([])
-            return set((state) => ({cart: [], ...state}))
+            set((state) => ({cart: [], ...state}))
         },
         increaseAmount: (id) => {
             const cart = get().cart
@@ -57,7 +57,7 @@ const useCartStore = create((set, get) => {
                 }
             }
             setItemAmount(newCart)
-            return set((state) => ({newCart, ...state}));
+            set((state) => ({newCart, ...state}));
         },
         decreaseAmount: (id) => {
             const cart = get().cart
@@ -77,7 +77,7 @@ const useCartStore = create((set, get) => {
                 }
             }
             setItemAmount(newCart)
-            return set((state) => ({newCart, ...state}));
+            set((state) => ({newCart, ...state}));
         }
     }
 })
