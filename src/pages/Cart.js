@@ -5,16 +5,18 @@ import { Link } from "react-router-dom";
 import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
-import { SidebarContext } from "../contexts/SidebarContext";
+import { useSideBarStore } from "../stores/sidearStore";
 import { CartContext } from "../contexts/CartContext";
 
 const Cart = () => {
-  const { isOpen, handleClose } = useContext(SidebarContext);
+  const { isOpen, close } = useSideBarStore();
   const { cart, clearCart, itemAmount, total } = useContext(CartContext);
 
   useEffect(() => {
-    if (isOpen) handleClose()
-  }, [isOpen, handleClose])
+    if (isOpen) {
+      close();
+    }
+  }, [isOpen])
 
   return (
     <section className="py-20 px-[50px] h-screen">
@@ -22,7 +24,7 @@ const Cart = () => {
         <div className="flex items-center justify-between py-6 border-b">
           <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
           <div
-            onClick={handleClose}
+            onClick={() => {}}
             className="cursor-poniter w-8 h-8 flex justify-center items-center"
           >
           </div>

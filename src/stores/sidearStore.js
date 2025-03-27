@@ -6,6 +6,9 @@ const useSideBarStore = create((set) => {
         handleClose: () => {
             return set((state) => ({isOpen: !state.isOpen}))
         },
+        close: () => {
+            return set((state) => ({isOpen: false}))
+        }
     }
 });
 
