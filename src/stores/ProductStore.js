@@ -1,7 +1,9 @@
 import { create } from "zustand";
 import createSelectors from "./CreateSelectors";
+import {devtools} from "zustand/middleware";
 
-const useProductStoreBase = create((set) => {
+const useProductStoreBase = create(
+    devtools((set) => {
 
     const fetchData = async () => {
         try {
@@ -19,7 +21,7 @@ const useProductStoreBase = create((set) => {
     return {
         products: []
     }
-});
+}));
 
 const useProductStore = createSelectors(useProductStoreBase);
 
