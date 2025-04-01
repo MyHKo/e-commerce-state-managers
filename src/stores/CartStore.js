@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, devtools } from "zustand/middleware";
 import createSelectors from "./CreateSelectors";
 
 const useCartStoreBase = create(
-    persist((set, get) => {
+    devtools(persist((set, get) => {
 
     const setItemAmount = (cart) => {
         const amount = cart.reduce((accumulator, currentItem) => {
@@ -86,7 +86,7 @@ const useCartStoreBase = create(
         {
             name: "CartStore",
         })
-)
+))
 
 const useCartStore = createSelectors(useCartStoreBase)
 
