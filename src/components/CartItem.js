@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
@@ -6,7 +6,9 @@ import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 import { useCartStore } from "../stores/CartStore";
 
 const CartItem = ({ item }) => {
-  const { removeFromCart, increaseAmount, decreaseAmount } = useCartStore();
+  const removeFromCart = useCartStore.use((state) => {return state.removeFromCart});
+  const increaseAmount = useCartStore.use((state) => {return state.increaseAmount});
+  const decreaseAmount = useCartStore.use((state) => {return state.decreaseAmount});
   const { id, title, image, price, amount } = item;
 
   return (

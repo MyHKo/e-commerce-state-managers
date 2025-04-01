@@ -10,7 +10,11 @@ import { useCartStore } from "../stores/CartStore";
 
 const Cart = () => {
   const { isOpen, close } = useSideBarStore();
-  const { cart, clearCart, itemAmount, total } = useCartStore();
+  const clearCart = useCartStore.use((state) => {return state.clearCart});
+  const cart = useCartStore.use((state) => {return state.cart});
+  const itemAmount = useCartStore.use((state) => {return state.itemAmount});
+  const total = useCartStore.use((state) => {return state.total});
+
 
   useEffect(() => {
     if (isOpen) {

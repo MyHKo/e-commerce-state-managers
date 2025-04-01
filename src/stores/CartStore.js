@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import createSelectors from "./CreateSelectors";
 
-const useCartStore = create(
+const useCartStoreBase = create(
     persist((set, get) => {
 
     const setItemAmount = (cart) => {
@@ -86,5 +87,7 @@ const useCartStore = create(
             name: "CartStore",
         })
 )
+
+const useCartStore = createSelectors(useCartStoreBase)
 
 export { useCartStore };

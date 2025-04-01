@@ -8,7 +8,7 @@ import { BsBag } from "react-icons/bs";
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const { handleClose } = useSideBarStore();
-  const { itemAmount } = useCartStore();
+  const itemAmount = useCartStore.use((state) => {return state.itemAmount});
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

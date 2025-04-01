@@ -6,7 +6,7 @@ import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { useCartStore } from "../stores/CartStore";
 
 const Product = ({ product }) => {
-  const { addToCart } = useCartStore();
+  const addToCart = useCartStore.use((state) => {return state.addToCart});
 
   const { id, image, category, title, price } = product;
   return (
