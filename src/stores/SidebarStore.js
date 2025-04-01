@@ -1,7 +1,9 @@
 import { create } from "zustand";
 import createSelectors from "./CreateSelectors";
+import {devtools} from "zustand/middleware";
 
-const useSideBarStoreBase = create((set) => {
+const useSideBarStoreBase = create(
+    devtools((set) => {
     return {
         isOpen: false,
         handleClose: () => {
@@ -11,7 +13,7 @@ const useSideBarStoreBase = create((set) => {
             return set((state) => ({isOpen: false}))
         }
     }
-});
+}));
 
 const useSideBarStore = createSelectors(useSideBarStoreBase)
 
