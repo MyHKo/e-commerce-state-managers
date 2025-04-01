@@ -4,8 +4,7 @@ import Product from '../components/Product'
 import Hero from '../components/Hero'
 
 const Home = () => {
-  const { products } = useProductStore();
-
+  const products = useProductStore.use((state) => {return state.products});
 
   const filteredProducts = products.filter((item) => {
     return (

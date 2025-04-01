@@ -5,7 +5,7 @@ import { useCartStore } from "../stores/CartStore";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { products } = useProductStore();
+  const products = useProductStore.use((state) => {return state.products});
   const addToCart = useCartStore.use((state) => {return state.addToCart});
 
   const product = products.find((item) => {
