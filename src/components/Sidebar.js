@@ -10,7 +10,8 @@ import { useSideBarStore } from "../stores/SidebarStore";
 import { useCartStore } from "../stores/CartStore";
 
 const Sidebar = () => {
-  const { isOpen, handleClose } = useSideBarStore();
+  const isOpen = useSideBarStore.use((state) => {return state.isOpen});
+  const handleClose = useSideBarStore.use((state) => {return state.handleClose});
   const clearCart = useCartStore.use((state) => {return state.clearCart});
   const itemAmount = useCartStore.use((state) => {return state.itemAmount});
   const cart = useCartStore.use((state) => {return state.cart});

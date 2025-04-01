@@ -7,7 +7,7 @@ import { BsBag } from "react-icons/bs";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const { handleClose } = useSideBarStore();
+  const handleClose = useSideBarStore.use((state) => {return state.handleClose});
   const itemAmount = useCartStore.use((state) => {return state.itemAmount});
 
   useEffect(() => {
