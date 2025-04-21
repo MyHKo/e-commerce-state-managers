@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import getProducts from "../thunk";
 
 const initialState = {
     products: []
