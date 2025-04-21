@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Product from '../components/Product'
 import Hero from '../components/Hero'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchProducts} from "../redux/actions/productAction";
 
 const Home = () => {
-  const products = useSelector(state => state.product.products);
+  const products = useSelector(state => state.products.products);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const filteredProducts = products.filter((item) => {
     return (

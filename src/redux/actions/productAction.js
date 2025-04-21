@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_REQUEST} from "../constants";
+import { FETCH_PRODUCTS_SUCCESS } from "../constants";
 
 export const fetchProducts = () => {
     return async (dispatch) => {
