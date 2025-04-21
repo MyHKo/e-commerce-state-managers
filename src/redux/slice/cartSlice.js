@@ -32,10 +32,10 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             const cart = state.cart
             const newCart = []
-            const newProduct = {...action.product};
+            const newProduct = {...action.payload.product};
             newProduct.amount = 1;
             for(let i = 0; i < cart.length; i++) {
-                if(cart[i].id === action.id) {
+                if(cart[i].id === action.payload.id) {
                     newProduct.amount = ++cart[i].amount;
                 }
                 else {
@@ -47,12 +47,12 @@ const cartSlice = createSlice({
         },
 
         removeFromCart: (state, action) => {
-            const newCart = state.cart.filter((item) => item.id !== action.id)
+            const newCart = state.cart.filter((item) => item.id !== action.payload.id)
             assignValues(state, newCart);
         },
 
         clearCart: (state) => {
-            state.cart = 0;
+            state.cart = [];
             state.total = 0;
             state.amount = 0;
         },
@@ -61,7 +61,7 @@ const cartSlice = createSlice({
             const cart = state.cart
             const newCart = [];
             for(let i = 0; i < cart.length; i++) {
-                if(cart[i].id === action.id) {
+                if(cart[i].id === action.payload.id) {
                     newCart.push({...cart[i], amount: ++cart[i].amount});
                 }
                 else {
@@ -76,7 +76,7 @@ const cartSlice = createSlice({
             const cart = state.cart
             const newCart = [];
             for(let i = 0; i < cart.length; i++) {
-                if(cart[i].id === action.id) {
+                if(cart[i].id === action.payload.id) {
                     if(cart[i].amount - 1 > 0) {
                         newCart.push({...cart[i], amount: --cart[i].amount});
                     }

@@ -30,7 +30,7 @@ const CartItem = ({ item }) => {
             {/* remove icon */}
             <div
               onClick={() => {
-                dispatch(removeFromCart(id))
+                dispatch(removeFromCart({id}))
               }}
               className="text-xl cursor-pointer"
             >
@@ -41,7 +41,7 @@ const CartItem = ({ item }) => {
             {/* quantity */}
             <div className="flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium">
               <div onClick={()=> {
-                dispatch(decreaseAmount(id))
+                dispatch(decreaseAmount({id}))
               }} className="h-full flex-1 flex justify-center items-center cursor-pointer">
                 <IoMdRemove />
               </div>
@@ -49,7 +49,7 @@ const CartItem = ({ item }) => {
                 {amount}
               </div>
               <div onClick={()=> {
-                dispatch(increaseAmount(id))
+                dispatch(increaseAmount({id}))
               }} className="h-full flex flex-1 justify-center items-center cursor-pointer">
                 <IoMdAdd />
               </div>
