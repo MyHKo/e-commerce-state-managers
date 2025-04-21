@@ -1,7 +1,7 @@
-import {CLOSE_SIDEBAR, OPEN_SIDEBAR} from "../constants";
+import {CLOSE_SIDEBAR, TOGGLE_SIDEBAR} from "../constants";
 
-export const openSidebar = () => ({
-    type: OPEN_SIDEBAR,
+export const toggleSidebar = () => ({
+    type: TOGGLE_SIDEBAR,
 })
 
 export const closeSidebar = () => ({
