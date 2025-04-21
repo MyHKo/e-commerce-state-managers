@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../contexts/ProductContext";
+import React from "react";
 import Product from '../components/Product'
 import Hero from '../components/Hero'
+import {useSelector} from "react-redux";
 
 const Home = () => {
-  const { products } = useContext(ProductContext);
+  const products = useSelector(state => state.product.products);
 
 
   const filteredProducts = products.filter((item) => {
