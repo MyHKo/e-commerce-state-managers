@@ -1,20 +1,24 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
 import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
-import { SidebarContext } from "../contexts/SidebarContext";
-import { CartContext } from "../contexts/CartContext";
+import {useDispatch, useSelector} from "react-redux";
+import {clearCart} from "../redux/actions/cartActions";
+import {closeSidebar} from "../redux/actions/sideBarActions";
 
 const Cart = () => {
-  const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, itemAmount, total } = useContext(CartContext);
+  const isOpen = useSelector((state) => state.sideBar.isOpen)
+  const cart = useSelector((state) => state.cart.cart)
+  const itemAmount = useSelector((state) => state.cart.amount)
+  const total = useSelector((state) => state.cart.total)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (isOpen) handleClose()
-  }, [isOpen, handleClose])
+    if (isOpen) dispatch(closeSidebar())
+  }, [isOpen, dispatch])
 
   return (
     <section className="py-20 px-[50px] h-screen">
@@ -22,7 +26,7 @@ const Cart = () => {
         <div className="flex items-center justify-between py-6 border-b">
           <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
           <div
-            onClick={handleClose}
+            onClick={() => {dispatch(closeSidebar())}}
             className="cursor-poniter w-8 h-8 flex justify-center items-center"
           >
           </div>
@@ -40,7 +44,7 @@ const Cart = () => {
                 {parseFloat(total).toFixed(2)}
               </div>
               <div
-                onClick={clearCart}
+                onClick={() => {dispatch(clearCart())}}
                 className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"
               >
                 <FiTrash2 />

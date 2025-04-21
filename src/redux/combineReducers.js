@@ -6,5 +6,5 @@ import sideBarReducer from "./reducers/sideBarReducer";
 export default combineReducers({
     product: productReducer,
     cart: cartReducer,
-    sideBart: sideBarReducer
+    sideBar: sideBarReducer
 })
