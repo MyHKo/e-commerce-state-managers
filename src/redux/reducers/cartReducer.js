@@ -2,7 +2,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART, INCREASE_AMOUNT, DECREASE_AM
 
 const initialState = {
     cart: [],
-    itemAmount: 0,
+    amount: 0,
     total: 0
 }
 
