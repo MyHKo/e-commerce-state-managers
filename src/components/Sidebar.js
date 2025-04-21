@@ -17,7 +17,6 @@ const Sidebar = () => {
   const total = useSelector((state) => state.cart.total);
   const dispatch = useDispatch();
 
-
   return (
     <div
       className={`${

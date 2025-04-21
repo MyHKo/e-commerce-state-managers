@@ -35,7 +35,7 @@ const addToCart = (state, action) => {
     return {
         ...state,
         cart: newCart,
-        amount: getItemTotal(newCart),
+        amount: getItemAmount(newCart),
         total: getItemTotal(newCart),
     }
 }
@@ -65,7 +65,7 @@ const increaseAmount = (state, action) => {
     return {
         ...state,
         cart: newCart,
-        amount: getItemTotal(newCart),
+        amount: getItemAmount(newCart),
         total: getItemTotal(newCart),
     }
 }
@@ -87,7 +87,7 @@ const decreaseAmount = (state, action) => {
     return {
         ...state,
         cart: newCart,
-        amount: getItemTotal(newCart),
+        amount: getItemAmount(newCart),
         total: getItemTotal(newCart),
     }
 }
