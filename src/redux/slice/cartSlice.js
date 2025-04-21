@@ -51,6 +51,12 @@ const cartSlice = createSlice({
             assignValues(state, newCart);
         },
 
+        clearCart: (state) => {
+            state.cart = 0;
+            state.total = 0;
+            state.amount = 0;
+        },
+
         increaseAmount: (state, action) => {
             const cart = state.cart
             const newCart = [];
@@ -85,5 +91,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const {addToCart, removeFromCart, increaseAmount, decreaseAmount} = cartSlice.actions
+export const {addToCart, removeFromCart, clearCart, increaseAmount, decreaseAmount} = cartSlice.actions
 export default cartSlice.reducer

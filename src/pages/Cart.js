@@ -6,8 +6,8 @@ import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCart} from "../redux/actions/cartActions";
-import {closeSidebar} from "../redux/actions/sideBarActions";
+import {clearCart} from "../redux/slice/cartSlice";
+import {closeSidebar} from "../redux/slice/sideBarSlice";
 
 const Cart = () => {
   const isOpen = useSelector((state) => state.sideBar.isOpen)

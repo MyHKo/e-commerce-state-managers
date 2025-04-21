@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
-import {toggleSidebar} from "../redux/actions/sideBarActions";
+import {toggleSidebar} from "../redux/slice/sideBarSlice";
 
 const Header = () => {
   // header state

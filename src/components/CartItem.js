@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 
 import {useDispatch} from "react-redux";
-import {decreaseAmount, increaseAmount, removeFromCart} from "../redux/actions/cartActions";
+import {decreaseAmount, increaseAmount, removeFromCart} from "../redux/slice/cartSlice";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
