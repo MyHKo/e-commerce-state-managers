@@ -1,10 +1,10 @@
-import { createStore } from "redux";
+import {applyMiddleware, createStore} from "redux";
 import combineReducers from "./combineReducers";
+import {thunk} from "redux-thunk";
 
 const store = createStore(
     combineReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-
+    applyMiddleware(thunk)
 )
 
 export default store

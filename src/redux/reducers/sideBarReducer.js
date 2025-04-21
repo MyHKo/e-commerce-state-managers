@@ -16,6 +16,8 @@ const sideBarReducer = (state = initialState, action) => {
                 ...state,
                 isOpen: false,
             }
+        default:
+            return state;
     }
 }
 
