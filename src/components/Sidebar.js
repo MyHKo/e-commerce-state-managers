@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Link } from "react-router-dom";
 
@@ -6,12 +6,17 @@ import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
-import { SidebarContext } from "../contexts/SidebarContext";
-import { CartContext } from "../contexts/CartContext";
+import {useDispatch, useSelector} from "react-redux";
+import {toggleSidebar} from "../redux/actions/sideBarActions";
+import {clearCart} from "../redux/actions/cartActions";
 
 const Sidebar = () => {
-  const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, itemAmount, total } = useContext(CartContext);
+  const isOpen = useSelector((state) => state.sideBar.isOpen);
+  const cart = useSelector((state) => state.cart.cart);
+  const itemAmount = useSelector((state) => state.cart.amount);
+  const total = useSelector((state) => state.cart.total);
+  const dispatch = useDispatch();
+
 
   return (
     <div
@@ -22,7 +27,9 @@ const Sidebar = () => {
       <div className="flex items-center justify-between py-6 border-b">
         <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
         <div
-          onClick={handleClose}
+          onClick={() => {
+            dispatch(toggleSidebar())
+          }}
           className="cursor-poniter w-8 h-8 flex justify-center items-center"
         >
           <IoMdArrowForward className="text-2xl" />
@@ -42,7 +49,9 @@ const Sidebar = () => {
           </div>
           {/* clear cart icon */}
           <div
-            onClick={clearCart}
+            onClick={() => {
+              dispatch(clearCart())
+            }}
             className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"
           >
             <FiTrash2 />
