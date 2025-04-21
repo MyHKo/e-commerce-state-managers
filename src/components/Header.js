@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import { SidebarContext } from "../contexts/SidebarContext";
-import { CartContext } from "../contexts/CartContext";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
+import {useDispatch, useSelector} from "react-redux";
+import {toggleSidebar} from "../redux/actions/sideBarActions";
 
 const Header = () => {
   // header state
   const [isActive, setIsActive] = useState(false);
-  const { isOpen, setIsOpen } = useContext(SidebarContext);
-  const { itemAmount } = useContext(CartContext);
+  const itemAmount = useSelector(state => state.cart.amount);
+  const dispatch = useDispatch();
 
   // event listener
   useEffect(() => {
@@ -33,7 +33,9 @@ const Header = () => {
 
         {/* cart */}
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            dispatch(toggleSidebar())
+          }}
           className="cursor-pointer flex relative"
         >
           <BsBag className="text-2xl" />
