@@ -9,13 +9,13 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import {useDispatch} from "react-redux";
-import {fetchProducts} from "./redux/actions/productAction";
+import getProducts from "./redux/thunk";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(getProducts());
   }, [dispatch]);
 
   return (
