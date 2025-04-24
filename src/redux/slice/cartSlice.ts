@@ -13,19 +13,19 @@ const initialState: cartSliceState = {
     total: 0
 }
 
-const getItemAmount = (cart: Array<ProductInterface>) => {
+const getItemAmount = (cart: Array<ProductInterface>): number => {
     return cart.reduce((accumulator: number, currentItem: ProductInterface) => {
         return accumulator + currentItem.amount;
     }, 0);
 }
 
-const getItemTotal = (cart: Array<ProductInterface>) => {
+const getItemTotal = (cart: Array<ProductInterface>): number => {
     return cart.reduce((accumulator: number, currentItem: ProductInterface) => {
         return accumulator + currentItem.price * currentItem.amount;
     }, 0);
 }
 
-const assignValues = (state: cartSliceState, newCart: Array<ProductInterface>) => {
+const assignValues = (state: cartSliceState, newCart: Array<ProductInterface>): void => {
     state.cart = newCart;
     state.amount = getItemAmount(newCart);
     state.total = getItemTotal(newCart);
@@ -36,7 +36,7 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
 
-        addToCart: (state, action: PayloadAction<{id: number, product: ProductInterface}>) => {
+        addToCart: (state, action: PayloadAction<{id: number, product: ProductInterface}>): void => {
             const cart: Array<ProductInterface> = state.cart
             const newCart: Array<ProductInterface> = []
             const newProduct: ProductInterface = {...action.payload.product};
@@ -53,20 +53,20 @@ const cartSlice = createSlice({
             assignValues(state, newCart);
         },
 
-        removeFromCart: (state, action: PayloadAction<{id: number}>) => {
+        removeFromCart: (state, action: PayloadAction<{id: number}>): void => {
             const newCart = state.cart.filter((item: ProductInterface) => item.id !== action.payload.id)
             assignValues(state, newCart);
         },
 
-        clearCart: (state) => {
+        clearCart: (state): void => {
             state.cart = [];
             state.total = 0;
             state.amount = 0;
         },
 
-        increaseAmount: (state, action: PayloadAction<{id: number}>) => {
-            const cart = state.cart
-            const newCart = [];
+        increaseAmount: (state, action: PayloadAction<{id: number}>): void => {
+            const cart: Array<ProductInterface> = state.cart
+            const newCart: Array<ProductInterface> = []
             for(let i = 0; i < cart.length; i++) {
                 if(cart[i].id === action.payload.id) {
                     newCart.push({...cart[i], amount: ++cart[i].amount});
@@ -79,9 +79,9 @@ const cartSlice = createSlice({
             assignValues(state, newCart);
         },
 
-        decreaseAmount: (state, action: PayloadAction<{id: number}>) => {
-            const cart = state.cart
-            const newCart = [];
+        decreaseAmount: (state, action: PayloadAction<{id: number}>): void => {
+            const cart: Array<ProductInterface> = state.cart
+            const newCart: Array<ProductInterface> = []
             for(let i = 0; i < cart.length; i++) {
                 if(cart[i].id === action.payload.id) {
                     if(cart[i].amount - 1 > 0) {

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { ApiProductInterface } from "../interfaces/ApiProductInterface";
 
-const getProducts = createAsyncThunk(
+const getProducts = createAsyncThunk<Array<ApiProductInterface>>(
     "products/getProducts",
     async () => {
         const response = await fetch("https://fakestoreapi.com/products")
@@ -8,4 +9,4 @@ const getProducts = createAsyncThunk(
     }
 )
 
-export default getProducts;
+export default getProducts

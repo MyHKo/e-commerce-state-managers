@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
+interface sideBarSliceInterface {
+    isOpen: boolean
+}
+
+const initialState: sideBarSliceInterface = {
     isOpen: false,
 }
 
@@ -8,10 +12,10 @@ const sideBarSlice = createSlice({
     name: "sideBar",
     initialState,
     reducers: {
-        toggleSidebar: (state) => {
+        toggleSidebar: (state): void => {
             state.isOpen = !state.isOpen
         },
-        closeSidebar: (state) => {
+        closeSidebar: (state): void => {
             state.isOpen = false
         }
     }
