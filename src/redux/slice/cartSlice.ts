@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { ProductInterface } from "../../interfaces/ProductInterface"
+import {ApiProductInterface} from "../../interfaces/ApiProductInterface";
 
 interface cartSliceState {
     cart: Array<ProductInterface>,
@@ -36,11 +37,12 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
 
-        addToCart: (state, action: PayloadAction<{id: number, product: ProductInterface}>): void => {
+        addToCart: (state, action: PayloadAction<{id: number, product: ApiProductInterface}>): void => {
             const cart: Array<ProductInterface> = state.cart
             const newCart: Array<ProductInterface> = []
-            const newProduct: ProductInterface = {...action.payload.product};
-            newProduct.amount = 1;
+            const newProduct = {
+                ...action.payload.product,
+                amount: 1} as ProductInterface
             for(let i = 0; i < cart.length; i++) {
                 if(cart[i].id === action.payload.id) {
                     newProduct.amount = ++cart[i].amount;
