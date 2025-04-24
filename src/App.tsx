@@ -10,28 +10,29 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import {useDispatch} from "react-redux";
 import getProducts from "./redux/thunk";
+import {RootDispatch} from "./redux/store";
 
 const App = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch<RootDispatch>();
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch]);
 
-  return (
-    <div className="overflow-hidden">
-      <Router>
-        <Header />
+    return (
+        <div className="overflow-hidden">
+        <Router>
+            <Header />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/product/:id" element={<ProductDetails />}></Route>
-        </Routes>
-        <Sidebar />
-        <Footer />
-      </Router>
+            <Route path="/" element={<Home />}></Route>
+    <Route path="/cart" element={<Cart />}></Route>
+    <Route path="/product/:id" element={<ProductDetails />}></Route>
+    </Routes>
+    <Sidebar />
+    <Footer />
+    </Router>
     </div>
-  );
+);
 };
 
 export default App;
