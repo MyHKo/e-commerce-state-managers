@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ProductInterface } from "/src/interfaces/ProductInterface"
 
 interface cartSliceState {
     cart: Array<Object>,
@@ -19,7 +20,7 @@ const getItemAmount = (cart: Array<cartSliceState>) => {
 }
 
 const getItemTotal = (cart: Array<cartSliceState>) => {
-    return cart.reduce((accumulator: number, currentItem: cartSliceState) => {
+    return cart.reduce((accumulator: number, currentItem: ProductInterface) => {
         return accumulator + currentItem.price * currentItem.amount;
     }, 0);
 }
