@@ -34,7 +34,7 @@ const Cart = () => {
                     </div>
                 </div>
                 <div className="flex flex-col gap-y-2 border-b">
-                    {cart.map((item) => {
+                    {cart.map((item: ProductInterface) => {
                         return <CartItem item={item} key={item.id} />;
                     })}
                 </div>
